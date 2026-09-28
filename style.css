@@ -99,6 +99,42 @@ body {
   line-height: 1.2;
 }
 
+/* ---------- Language switch ---------- */
+.lang-switch {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Outfit", "Helvetica Neue", Arial, sans-serif;
+  color: var(--cream);
+}
+
+.lang-switch button {
+  background: none;
+  border: none;
+  padding: 0.25rem 0.1rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  color: inherit;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switch button:hover,
+.lang-switch button[aria-pressed="true"] {
+  opacity: 1;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  color: var(--gold);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   position: fixed;
