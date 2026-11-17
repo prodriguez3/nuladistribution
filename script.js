@@ -706,11 +706,11 @@
     [
       "DeSoi",
       "aperitif",
-      "Vino Violette",
+      "Purple Lune",
       "ap",
-      "250ml can",
-      "Violet, plum and a touch of spice. Like a glass of red, reinvented.",
-      "Violeta, ciruela y un toque de especia. Como una copa de tinto, reinventada.",
+      "237ml can",
+      "Black currant, tart cherry and a touch of vanilla oak. Rich and layered, like a glass of red, reinvented.",
+      "Grosella negra, cereza ácida y un toque de roble con vainilla. Intenso y con capas, como una copa de tinto, reinventada.",
     ],
     [
       "DeSoi",
@@ -788,11 +788,30 @@
 
   /* Product photos by product name. Products not listed show a placeholder. */
   var IMG = {
-    "Monday Gin": "media/monday/monday-gin.jpg",
-    "Monday Whiskey": "media/monday/monday-whiskey.jpg",
-    "Monday Mezcal": "media/monday/monday-mezcal_.jpg",
-    "Grapefruit Fizz": "media/tiger/tiger-grapefruit.jpg",
-    "Lavender French 75": "media/tiger/tiger-french.jpg",
+    "Monday Gin": "media/monday/monday-gin.png",
+    "Monday Whiskey": "media/monday/monday-whiskey.png",
+    "Monday Mezcal": "media/monday/monday-mezcal_.png",
+    "Monday Rum": "media/monday/monday-rum.png",
+    "Aperitif Original": "media/ghia/ghia-original.png",
+    "Berry Ghia": "media/ghia/ghia-berry.png",
+    "Le Fizz": "media/ghia/ghia-le-fizz.png",
+    "Bee’s Knees": "media/tiger/beesknees.png",
+    "Grapefruit Fizz": "media/tiger/tiger-grapefruit.png",
+    "Lavender French 75": "media/tiger/tiger-french.png",
+    Mimosa: "media/tiger/mimosa.png",
+    Mojito: "media/tiger/mojito.png",
+    "Variety Pack": "media/tiger/varpack.png",
+    "Spritz Italiano": "media/desoi/spritz-italiano.png",
+    "Très Rosé": "media/desoi/tres-rose.png",
+    "Moscow Mule": "media/desoi/st-moritz-mule.png",
+    "Haute Margarita": "media/desoi/haute-margarita.png",
+    "Purple Lune": "media/desoi/purple-lune.png",
+    "Red Blend": "media/surely/red-blend.png",
+    "Sparkling Brut": "media/surely/sparkling-brut.png",
+    "Sparkling Brut Can": "media/surely/brut-can.png",
+    "Sparkling Rosé Can": "media/surely/sparkling-rose-can.png",
+    Rosé: "media/surely/sparkling-rose.png",
+    "Sauvignon Blanc": "media/surely/sauvignon-blanc.png",
   };
 
   function bg() {

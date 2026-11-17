@@ -115,15 +115,23 @@ nav {
   min-width: 16rem;
   max-width: 90vw;
   white-space: nowrap;
-  background: none;
-  border: 0;
-  padding: 0.6rem 1.5rem 1rem;
+  background: rgba(42, 10, 10, 0.96);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  padding: 0.8rem 1.5rem 1rem;
   z-index: 5;
-  text-shadow: 0 1px 10px rgba(30, 6, 6, 0.9);
 }
 .item:hover .sub,
 .item:focus-within .sub {
   display: block;
+  animation: subIn 0.2s ease-out;
+}
+@keyframes subIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 .sub a {
   display: block;
@@ -251,15 +259,15 @@ main {
   color: var(--cream);
 }
 .tag {
-  font: 400 clamp(1rem, 2.4vw, 1.5rem) var(--display);
+  font: 400 clamp(1.2rem, 2.9vw, 1.85rem) var(--display);
   letter-spacing: 0.141em;
   color: var(--gold);
   margin: 1.2rem 0 0.8rem;
 }
 .desc {
-  max-width: 34rem;
+  max-width: 40rem;
   margin: 0 0 2rem;
-  font-size: 1.25rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
 }
 .note {
   font: 400 0.85rem var(--display);
@@ -1266,6 +1274,9 @@ button.btn.solid:hover {
   .sub {
     display: block;
     position: static;
+    background: none;
+    box-shadow: none;
+    animation: none;
     border: 0;
     padding: 0 0 0.5rem 0.8rem;
     min-width: 0;
