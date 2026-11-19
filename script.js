@@ -6,7 +6,7 @@
   var T = {
     tag: ["The New Way to Drink.", "La nueva forma de brindar."],
     desc: [
-      "Mexico’s pioneer portfolio of premium alcohol-free spirits and RTDs.",
+      "Mexico’s pioneer portfolio of premium alcohol-free spirits and ready-to-drink cocktails.",
       "El portafolio pionero en México de destilados premium y coctelería libres de alcohol.",
     ],
     cta: ["Discover NULA", "Descubre NULA"],
@@ -47,7 +47,7 @@
       ["Portfolio", "Portafolio"],
       [
         ["Brands", "Marcas", "brands"],
-        ["RTD", "Listos para brindar", "rtd"],
+        ["Ready-to-drink", "Listos para brindar", "rtd"],
         ["Wine", "Vino", "wine"],
         ["Spirits", "Destilados", "spirits"],
       ],
@@ -80,7 +80,7 @@
     manifesto: ["Manifesto", "Manifiesto"],
     "sober-curious": ["Sober curious", "Mundo Sobrio"],
     brands: ["Brands", "Marcas"],
-    rtd: ["RTD", "Listos para brindar"],
+    rtd: ["Ready-to-drink", "Listos para brindar"],
     wine: ["Wine", "Vino"],
     spirits: ["Spirits", "Destilados"],
     hospitality: ["Hospitality", "Hospitalidad"],
@@ -127,17 +127,33 @@
     AF = {};
 
   /* ===== PAGE: Why NULA ===== */
+  var PIL = [
+    ["Flavor", "Sabor", "flavor",
+      "Each brand in the portfolio earns its place for the mix of flavors it brings, something for every palate.",
+      "Cada marca del portafolio se gana su lugar por la mezcla de sabores que aporta, algo para cada paladar."],
+    ["Sophistication", "Sofisticación", "sophistication",
+      "Alcohol-free shouldn’t mean a step down. We select brands that belong on the top shelf, with the same care as anything else.",
+      "Libre de alcohol no debería significar un paso atrás. Elegimos marcas que pertenecen al estante más alto, con el mismo cuidado que cualquier otra."],
+    ["Experience", "Experiencia", "experience",
+      "The drink isn’t everything, but it’s always a great complement. Each brand we carry is here to make sure the moment is never forgotten.",
+      "La bebida no lo es todo, pero siempre es un gran complemento. Cada marca que representamos está aquí para que el momento nunca se olvide."],
+    ["Gastronomy", "Gastronomía", "gastronomy",
+      "Great food deserves a great pour beside it. We select brands that belong on the menu, as part of the meal.",
+      "La buena comida merece una gran bebida a su lado. Elegimos marcas que pertenecen en la carta, como parte de la comida."],
+    ["Wellness", "Bienestar", "wellness",
+      "Choosing this way is choosing to feel good tomorrow, too. It’s balance, not sacrifice.",
+      "Elegir así es elegir sentirte bien mañana también. Es equilibrio, no renuncia."],
+    ["Socializing", "Socialización", "events",
+      "The best company is good company, even your own. What we carry is made for the moment, whoever you’re with.",
+      "La mejor compañía es la buena compañía, incluso la tuya. Lo que representamos está hecho para el momento, estés con quien estés."],
+    ["Choice", "Elección", "choice",
+      "Your choice, your terms. What we carry gives it the range it deserves.",
+      "Tu elección, a tu manera. Lo que representamos le da la variedad que merece."],
+    ["Authenticity", "Autenticidad", "authenticity",
+      "Everything we carry is made with care and stands apart, chosen for what makes it its own.",
+      "Todo lo que representamos está hecho con cuidado y se distingue, elegido por lo que lo hace único."],
+  ];
   R["why-nula"] = function () {
-    var pil = [
-      ["Flavor", "Sabor", "flavor"],
-      ["Sophistication", "Sofisticación", "sophistication"],
-      ["Experience", "Experiencia", "experience"],
-      ["Gastronomy", "Gastronomía", "gastronomy"],
-      ["Wellness", "Bienestar", "wellness"],
-      ["Socializing", "Socialización", "events"],
-      ["Choice", "Elección", "choice"],
-      ["Authenticity", "Autenticidad", "authenticity"],
-    ];
     return (
       /* Hero */
       '<section class="bd bd-hero"><div class="sec">' +
@@ -153,7 +169,7 @@
       /* Intro: text + photo */
       '<section class="bd bd-red"><div class="sec two"><div><p>' +
       L([
-        "NULA brings to you top-shelf alcohol-free RTD, wines, and spirits to Mexico, carefully selected for their flavor, quality, sophistication and ability to belong at the table, behind the bar and at the center of the experience.",
+        "NULA brings to you top-shelf alcohol-free ready-to-drink cocktails, wines, and spirits to Mexico, carefully selected for their flavor, quality, sophistication and ability to belong at the table, behind the bar and at the center of the experience.",
         "NULA trae a México lo mejor en bebidas listas para beber, vinos y destilados libres de alcohol, seleccionados por su sabor, calidad, sofisticación y por su lugar en la mesa, detrás de la barra y en el centro de cualquier experiencia.",
       ]) +
       '</p><h2 class="mid">' +
@@ -188,22 +204,19 @@
         "The core pillars of every brand we carry.",
         "Los pilares de cada marca que representamos.",
       ]) +
-      '</h2><div class="tiles">' +
-      pil
-        .map(function (t) {
-          return (
-            '<div class="tile">' +
-            (t[2]
-              ? '<img src="media/whynula/' + t[2] + '.jpg" alt="' + L(t) + '" loading="lazy" decoding="async">'
-              : PH("Photo")) +
-            "<b>" + L(t) + "</b></div>"
-          );
-        })
-        .join("") +
-      "</div><p>" +
+      '</h2><div class="tiles" id="tiles">' +
+      PIL.map(function (t, n) {
+        return (
+          '<button type="button" class="tile" data-n="' + n + '" aria-controls="pdet">' +
+          '<img src="media/whynula/' + t[2] + '.jpg" alt="" loading="lazy" decoding="async">' +
+          "<b>" + L(t) + "</b></button>"
+        );
+      }).join("") +
+      '</div><div class="pdet" id="pdet" hidden></div>' +
+      '<p class="nw">' +
       L([
-        "The NULA world is everything you want to experience, and the secret is: you will remember all of it.",
-        "El mundo NULA es todo lo que quieres experimentar, y el secreto es: lo vas a recordar todo.",
+        "The NULA world is everything you want to experience,<br>and the secret is: you will remember all of it.",
+        "El mundo NULA es todo lo que quieres experimentar,<br>y el secreto es: lo vas a recordar todo.",
       ]) +
       "</p><p>" +
       L([
@@ -242,6 +255,39 @@
       LK("sober-curious", ["Discover Sober Curious →", "Descubre Mundo Sobrio →"]) +
       "</div></section>"
     );
+  };
+
+  AF["why-nula"] = function () {
+    var tiles = document.getElementById("tiles"),
+      det = document.getElementById("pdet"),
+      cur = -1;
+    function show(n) {
+      var on = tiles.querySelector(".tile.on");
+      if (on) on.classList.remove("on");
+      if (n === cur) {
+        cur = -1;
+        det.hidden = true;
+        return;
+      }
+      cur = n;
+      var t = PIL[n];
+      tiles.children[n].classList.add("on");
+      det.innerHTML =
+        '<img src="media/whynula/' + t[2] + '.jpg" alt="">' +
+        '<div><div class="eyebrow">' + L(["The NULA World", "El mundo NULA"]) + "</div>" +
+        "<h3>" + L(t) + "</h3><p>" + L([t[3], t[4]]) + "</p></div>" +
+        '<button type="button" class="pdx" aria-label="' + L(["Close", "Cerrar"]) + '">×</button>';
+      det.hidden = false;
+      det.querySelector(".pdx").onclick = function () {
+        show(cur);
+      };
+      if (det.getBoundingClientRect().bottom > innerHeight)
+        det.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    tiles.onclick = function (e) {
+      var b = e.target.closest(".tile");
+      if (b) show(+b.dataset.n);
+    };
   };
 
   /* ===== PAGE: Our Story ===== */
@@ -554,7 +600,7 @@
   var CAT = {
     spirits: ["Spirits", "Destilados", "#B08F57"],
     aperitif: ["Aperitif", "Aperitivo", "#D2693C"],
-    rtd: ["RTD Cocktails", "Cócteles listos", "#4F9C86"],
+    rtd: ["Ready-to-drink", "Cócteles listos", "#4F9C86"],
     wine: ["Wine", "Vino", "#A8456A"],
     beer: ["Beer", "Cerveza", "#D9B23A"],
     all: ["All", "Todo"],
@@ -563,7 +609,7 @@
     zp: ["Zero-proof spirit", "Destilado sin alcohol"],
     ap: ["Apéritif", "Aperitivo"],
     sap: ["Sparkling apéritif", "Aperitivo espumoso"],
-    rtd: ["RTD cocktail", "Cóctel listo"],
+    rtd: ["Ready-to-drink cocktail", "Cóctel listo"],
     vp: ["Variety pack", "Paquete variado"],
     aw: ["Alcohol-removed wine", "Vino sin alcohol"],
   };
@@ -1392,7 +1438,7 @@
       ]) +
       "</h1><p>" +
       L([
-        "NULA brings premium alcohol-free spirits, wine and RTDs to every table, room and moment you serve. Delivered and supported across Mexico and the USA.",
+        "NULA brings premium alcohol-free spirits, wine and ready-to-drink cocktails to every table, room and moment you serve. Delivered and supported across Mexico and the USA.",
         "NULA lleva destilados, vinos y coctelería premium libres de alcohol a cada mesa, habitación y momento que ofreces. Con entrega y acompañamiento en México y Estados Unidos.",
       ]) +
       '</p><div class="pills">' +
