@@ -1,6 +1,9 @@
 (function () {
   /* ===== Settings ===== */
   var VIDEO = "media/hero.mp4";
+  /* Contact form: paste your Web3Forms access key here (get one free at web3forms.com).
+     While it's empty, the form falls back to opening the visitor's email app. */
+  var FORM_KEY = "";
 
   /* ===== Shared copy (EN / ES) ===== */
   var T = {
@@ -55,21 +58,21 @@
     [
       ["Hospitality", "Hospitalidad"],
       [
+        ["Overview", "Vista general", "hospitality"],
         ["Hotels", "Hoteles", "hotels"],
         ["Restaurants", "Restaurantes", "restaurants"],
         ["Bars", "Bares", "bars"],
         ["Events", "Eventos", "events"],
         ["Corporate", "Corporativos", "corporate"],
       ],
-      "hospitality",
     ],
-    [["Bring NULA", "Compra NULA"], [["Contact", "Contacto", "contact"]]],
+    [["Get in touch", "Compra NULA"], [["Contact", "Contacto", "contact"]]],
   ];
   var FN = [
     ["Our Story", "Nuestra historia", "our-story"],
     ["Portfolio", "Portafolio", "brands"],
     ["Hospitality", "Hospitalidad", "hospitality"],
-    ["Bring NULA", "Compra NULA", "contact"],
+    ["Get in touch", "Compra NULA", "contact"],
   ];
 
   /* ===== Page titles [en, es]. Pages without a custom renderer (privacy, terms)
@@ -163,7 +166,7 @@
       "</h1><p>" +
       L([
         "For generations, alcohol has been part of how we celebrate, connect, dine, unwind and experience life. But today, we are choosing differently.",
-        "Por generaciones, el alcohol ha sido parte de cómo celebramos, convivimos, comemos, relajamos y creamos experiencias. Pero hoy, elegimos diferente.",
+        "Por generaciones, el alcohol ha sido parte de cómo celebramos, convivimos, comemos, relajamos y creamos experiencias. Pero hoy, se elige diferente.",
       ]) +
       "</p></div></section>" +
       /* Intro: text + photo */
@@ -174,8 +177,8 @@
       ]) +
       '</p><h2 class="mid">' +
       X([
-        "The experience doesn’t need to change. {{The choice does.}}",
-        "La experiencia no tiene que cambiar. {{La elección sí.}}",
+        "More choices, {{same experience.}}",
+        "Sumamos opciones, {{no restamos experiencia.}}",
       ]) +
       "</h2>" +
       BT("brands", ["Explore the NULA World →", "Explora el mundo NULA →"]) +
@@ -202,7 +205,7 @@
       '<h2 class="mid">' +
       L([
         "The core pillars of every brand we carry.",
-        "Los pilares de cada marca que representamos.",
+        "Los pilares detrás de cada marca que elegimos.",
       ]) +
       '</h2><div class="tiles" id="tiles">' +
       PIL.map(function (t, n) {
@@ -227,29 +230,33 @@
       LK("our-story", ["Our Story →", "Nuestra historia →"]) +
       "</p></div></section>" +
       /* What we believe */
-      '<section class="bd bd-warm"><div class="sec">' +
+      '<section class="bd bd-warm"><div class="sec two wb"><div>' +
       EY(["What we believe", "En qué creemos"]) +
       '<h2 class="mid">' +
       L([
-        "The way the world drinks is changing, and the best tables, bars and hotels are already adapting. Mexico is asking for it too.",
-        "La forma en que el mundo brinda está cambiando, y las mejores mesas, bares y hoteles ya se están adaptando. México ya lo está pidiendo también.",
+        "The way the world drinks is changing, and the best tables, bars and hotels are already adapting.",
+        "La forma en que el mundo brinda está cambiando, y las mejores mesas, bares y hoteles ya se están adaptando.",
       ]) +
       "</h2><p>" +
       L([
-        "Alcohol-free isn’t a second option anymore. It belongs on every great menu, next to the finest wine and the best pour. The places that offer it lead. The ones that don’t will be asked for it. It’s time to make the difference.",
-        "Lo libre de alcohol ya no es una segunda opción. Pertenece en toda gran carta, junto al mejor vino y al mejor destilado. Los lugares que lo ofrecen marcan la pauta. A los que no, se los van a pedir. Es hora de marcar la diferencia.",
+        "Alcohol-free isn’t a second option anymore. It belongs on every great menu, next to the finest wine and the best pour.",
+        "Lo libre de alcohol ya no es una segunda opción. Pertenece en toda gran carta, junto al mejor vino y al mejor destilado.",
       ]) +
       '</p><p class="accent">' +
       L([
-        "Great hospitality means everyone at the table has something worth raising.",
-        "La buena hospitalidad es que todos en la mesa tengan algo con lo que valga la pena brindar.",
+        "Everyone included. No exceptions.",
+        "No dejar a nadie fuera. Así de simple.",
       ]) +
-      "</p></div></section>" +
+      "</p></div>" +
+      '<img class="wb-pic" src="media/whynula/believe.jpg" alt="' +
+      L(["Friends sharing drinks in a rooftop pool", "Amigos brindando en una alberca en la azotea"]) +
+      '" loading="lazy" decoding="async">' +
+      "</div></section>" +
       /* Closing CTA */
       '<section class="bd bd-dark"><div class="sec cen"><h2 class="mid">' +
       L([
-        "People are seeking a sober world of well-curated beverages.",
-        "Hay quienes buscan un mundo sobrio de bebidas bien curadas.",
+        "The demand is already here. See the movement behind it.",
+        "Esto ya está cambiando la forma de consumir. Adelántate.",
       ]) +
       "</h2>" +
       LK("sober-curious", ["Discover Sober Curious →", "Descubre Mundo Sobrio →"]) +
@@ -536,7 +543,7 @@
         return "<div><b>" + s[0] + "</b>" + L([s[1], s[2]]) + "</div>";
       }).join("") +
       "</div>" +
-      '<p style="font-size:1.4rem">' +
+      '<p class="oneline">' +
       X([
         "A whole world is drinking differently, by choice. Not less life. More {{of it.}}",
         "Todo el mundo está bebiendo distinto, por elección. No menos vida. Más {{de ella.}}",
@@ -562,7 +569,6 @@
           "</span></div></div></a>"
         );
       }).join("") +
-      "</div>" +
       '<a class="mk" href="' +
       L([
         "https://www.marketdataforecast.com/market-reports/latin-america-non-alcoholic-beverage-market",
@@ -573,7 +579,9 @@
         "Latin America’s non-alcoholic beverage market, from USD 84.6B in 2024 to a projected USD 118.4B by 2029. The region is one of the fastest-moving in the world.",
         "El mercado de bebidas sin alcohol de América Latina, de USD 84.6 mil millones en 2024 a una proyección de USD 118.4 mil millones para 2029. La región es una de las de mayor movimiento en el mundo.",
       ]) +
-      "</p></a></div></section>" +
+      "</p><span>" +
+      rm +
+      "</span></a></div></div></section>" +
       '<section class="bd bd-warm"><div class="sec cen">' +
       EY(["And now", "Y ahora"]) +
       '<h2 class="big">' +
@@ -584,7 +592,7 @@
         "El mundo lleva años brindando así. Lo estamos trayendo aquí.",
       ]) +
       "</p>" +
-      BT("contact", ["Bring NULA →", "Compra NULA →"]) +
+      BT("contact", ["Book a tasting for your business →", "Agenda una demostración →"]) +
       "</div></section>" +
       '<section class="bd bd-dark"><p class="src">' +
       L([
@@ -966,7 +974,7 @@
         "Bajas en azúcar · Sin aditivos artificiales · Ingredientes premium y naturales · Cada marca elegida a mano",
       ]) +
       "</p>" +
-      BT("contact", ["Bring NULA", "Compra NULA"]) +
+      BT("contact", ["Get in touch", "Compra NULA"]) +
       "</div></section>" +
       '<section class="bd bd-red"><div class="sec"><div id="bg">' +
       bg() +
@@ -980,7 +988,7 @@
       "</h2><p>" +
       L([
         "Tell us what your venue needs and we’ll source it. Our portfolio keeps growing, and a lot of it starts with a request like yours.",
-        "Cuéntenos qué necesita tu espacio y lo conseguimos. Nuestro portafolio sigue creciendo, y mucho empieza con una solicitud como la tuya.",
+        "Cuéntanos qué es lo que estás buscando y lo conseguimos. Nuestro portafolio sigue creciendo, y mucho empieza con una solicitud como la tuya.",
       ]) +
       '</p><a class="btn solid" href="https://wa.me/525664733266" target="_blank" rel="noopener">' +
       icon("wa") +
@@ -992,7 +1000,7 @@
       '<section class="bd bd-warm"><div class="sec cen"><h2 class="mid">' +
       L(["Ready to carry these?", "¿Listo para tenerlas?"]) +
       '</h2><a class="btn solid" href="#contact">' +
-      L(["Bring NULA", "Compra NULA"]) +
+      L(["Get in touch", "Compra NULA"]) +
       "</a></div></section>"
     );
   };
@@ -1147,7 +1155,7 @@
         "¿No sabes por dónde empezar? Cuéntanos de tu espacio y armamos lo ideal.",
       ]) +
       "</h3><p><b>" +
-      L(["Bring NULA →", "Compra NULA →"]) +
+      L(["Get in touch →", "Compra NULA →"]) +
       "</b></p></a></div></div></section>"
     );
   };
@@ -1401,7 +1409,7 @@
         '<section class="bd bd-warm"><div class="sec"><h2 class="mid">' +
         L([d[11], d[12]]) +
         '</h2><a class="btn solid" href="#contact">' +
-        L(["Bring NULA", "Compra NULA"]) +
+        L(["Get in touch", "Compra NULA"]) +
         '</a><a class="btn" href="#brands">' +
         L(["See the Portfolio", "Ver el portafolio"]) +
         "</a>" +
@@ -1433,8 +1441,8 @@
       EY(["Carry NULA", "Lleva NULA"]) +
       '<h1 class="big">' +
       X([
-        "Bring the new way to drink {{to your guests.}}",
-        "Lleva la nueva forma de beber {{a tus invitados.}}",
+        "Bring the new way to drink {{to your customers.}}",
+        "Lleva la nueva forma de beber {{a tus clientes.}}",
       ]) +
       "</h1><p>" +
       L([
@@ -1492,7 +1500,8 @@
         "Opciones de menú, un evento, un programa completo…",
       ]) +
       '"></textarea></div></div>' +
-      '<p style="margin:1.4rem 0 0"><button class="btn solid" type="submit">' +
+      '<input type="checkbox" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<p style="margin:1.4rem 0 0"><button class="btn solid" type="submit" id="cs">' +
       L(["Start the conversation", "Inicia la conversación"]) +
       '</button></p><p class="fnote" id="fs">' +
       L(["We reply in under 24 hours.", "Respondemos en menos de 24 hrs."]) +
@@ -1522,29 +1531,74 @@
     );
   };
   AF.contact = function () {
-    document.getElementById("cf").onsubmit = function (e) {
+    var form = document.getElementById("cf"),
+      note = document.getElementById("fs"),
+      btn = document.getElementById("cs");
+    form.onsubmit = function (e) {
       e.preventDefault();
       var v = function (i) {
-        return document.getElementById(i).value;
+        return document.getElementById(i).value.trim();
       };
-      var body = [
-        "Name: " + v("cn"),
-        "Business: " + v("cb"),
-        "Type of venue: " + v("ct"),
-        "Email: " + v("ce"),
-        "",
-        "Message:",
-        v("cm"),
-      ].join("\n");
-      location.href =
-        "mailto:hola@nuladistribution.com?subject=" +
-        encodeURIComponent("NULA inquiry — " + v("cb")) +
-        "&body=" +
-        encodeURIComponent(body);
-      document.getElementById("fs").textContent = L([
-        "Opening your email app to send this. If nothing opens, write to hola@nuladistribution.com.",
-        "Abriendo tu app de correo para enviarlo. Si no se abre, escribe a hola@nuladistribution.com.",
-      ]);
+      var subject = "NULA inquiry — " + v("cb");
+      if (!FORM_KEY) {
+        var body = [
+          "Name: " + v("cn"),
+          "Business: " + v("cb"),
+          "Type of venue: " + v("ct"),
+          "Email: " + v("ce"),
+          "",
+          "Message:",
+          v("cm"),
+        ].join("\n");
+        location.href =
+          "mailto:hola@nuladistribution.com?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(body);
+        note.textContent = L([
+          "Opening your email app to send this. If nothing opens, write to hola@nuladistribution.com.",
+          "Abriendo tu app de correo para enviarlo. Si no se abre, escribe a hola@nuladistribution.com.",
+        ]);
+        return;
+      }
+      btn.disabled = true;
+      note.textContent = L(["Sending…", "Enviando…"]);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: FORM_KEY,
+          subject: subject,
+          from_name: "NULA website",
+          botcheck: document.getElementById("hp").checked,
+          Name: v("cn"),
+          Business: v("cb"),
+          "Type of venue": v("ct"),
+          email: v("ce"),
+          Message: v("cm"),
+          Language: lang.toUpperCase(),
+        }),
+      })
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (d) {
+          if (!d.success) throw 0;
+          form.reset();
+          note.textContent = L([
+            "Thank you! We got your message and will reply within 24 hours.",
+            "¡Gracias! Recibimos tu mensaje y te responderemos en menos de 24 hrs.",
+          ]);
+        })
+        .catch(function () {
+          note.textContent = L([
+            "Something went wrong. Please try again, or write to hola@nuladistribution.com.",
+            "Algo salió mal. Inténtalo de nuevo o escribe a hola@nuladistribution.com.",
+          ]);
+        })
+        .then(function () {
+          btn.disabled = false;
+        });
     };
   };
 

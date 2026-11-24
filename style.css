@@ -663,6 +663,18 @@ img.bio {
 .two .mid {
   margin-top: 1.6rem;
 }
+.wb p {
+  font-size: inherit;
+}
+.wb .mid {
+  margin-top: 0.6rem;
+}
+.wb-pic {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
 .quote {
   font: 500 clamp(1.6rem, 3.6vw, 2.8rem)/1.35 var(--display);
   margin: 1.2rem 0 1rem;
@@ -800,7 +812,7 @@ img.bio {
 }
 .cds {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -863,13 +875,54 @@ img.bio {
 .cd .mo span {
   color: var(--gold);
 }
+/* Market stat: sits in the card grid beside the last card, spanning the rest of the row */
 .mk {
-  display: block;
-  padding: 2rem;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
   border: 1px solid var(--line);
   background: rgba(241, 232, 201, 0.04);
   color: var(--cream);
+  transition:
+    border-color 0.3s,
+    background 0.3s;
+}
+.mk:hover,
+.mk:focus-visible {
+  border-color: var(--gold);
+  background: rgba(241, 232, 201, 0.08);
+}
+.mk p {
+  margin: 1rem 0 0;
+  max-width: 32rem;
+}
+.mk span {
+  color: var(--gold);
   margin-top: 1rem;
+}
+.oneline {
+  font-size: clamp(1.1rem, 2.1vw, 1.4rem);
+}
+@media (min-width: 800px) {
+  .sec .oneline {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .cds {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .cds {
+    grid-template-columns: 1fr;
+  }
+  .mk {
+    grid-column: auto;
+  }
 }
 .mk b {
   display: block;
@@ -1210,6 +1263,10 @@ button.btn.solid {
 }
 button.btn.solid:hover {
   background: var(--cream);
+}
+.hp {
+  position: absolute;
+  left: -9999px;
 }
 .fnote {
   font-size: 0.95rem;
